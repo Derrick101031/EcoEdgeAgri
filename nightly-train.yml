@@ -1,0 +1,19 @@
+name: nightly-train
+on:
+  schedule: [{cron: "0 3 * * *"}]   # 03:00 UTC
+  workflow_dispatch:
+jobs:
+  train:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with: {python-version: '3.11'}
+      - run: pip install -r requirements.txt
+      - run: python train.py
+      - name: Upload artefact
+        uses: actions/upload-artifact@v4
+        with:
+          name: tflm_model
+          path: models/latest_actor_int8.tflite
