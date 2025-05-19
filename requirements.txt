@@ -1,0 +1,10 @@
+pandas
+numpy
+matplotlib          # optional
+gymnasium==0.29
+stable-baselines3   # or tf-agents
+torch>=2.0
+onnx, onnxruntime
+tflite-support
+d3rlpy              # great for offline RL datasets
+requests            # fetch from ThingSpeak
